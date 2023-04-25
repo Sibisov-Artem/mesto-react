@@ -1,41 +1,21 @@
-import logo from './logo.svg';
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
+
 
 function App() {  //функциональный компонент App
   return (
+
     <div className="root">
 
       <div className="page">
 
-        <header className="header page__section">
-          <div className="header__logo"></div>
-        </header>
+        <Header />
 
-        <main className="content">
+        <Main />
 
-          <section className="profile section page__section">
-            <div className="profile__avatar-wrapper">
-              {/* Вставки вида <% %> — синтаксис шаблона lodash */}
-              <img className="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="аватарка" />
-            </div>
+        <Footer />
 
-            <div className="profile__info">
-              <h1 className="profile__name">Жак-Ив Кусто</h1>
-              <button className="profile__edit-btn hover" type="button"></button>
-              <p className="profile__description">Исследователь океана</p>
-            </div>
-            <button className="profile__add-btn hover" type="button"></button>
-          </section>
-
-          <section className="place section page__section" aria-label="Места">
-            <ul className="place__grid">
-            </ul>
-          </section>
-
-        </main>
-
-        <footer className="footer section page__section">
-          <p className="footer__copyright">&copy; 2023 Mesto Russia</p>
-        </footer>
 
       </div>
 
@@ -79,8 +59,8 @@ function App() {  //функциональный компонент App
 
         <figure className="popup__container-view">
           <button className="popup__close-btn hover" type="button"></button>
-          <img className="popup__image" alt="" src="#"/>
-            <figcaption className="popup__image-caption"></figcaption>
+          <img className="popup__image" alt="" src="#" />
+          <figcaption className="popup__image-caption"></figcaption>
         </figure>
 
       </div>
@@ -115,16 +95,16 @@ function App() {  //функциональный компонент App
       <template className="card-template">
 
         <li className="place__card">
-          <img className="place__image" alt=""/>
-            <button className="place__wastebasket-btn hover" type="button"></button>
-            <div className="place__info">
-              <h2 className="place__title"></h2>
-              <div className="place__like">
-                <button className="place__like-btn hover" type="button"></button>
-                <p className="place__like-count">111</p>
-              </div>
-
+          <img className="place__image" alt="" />
+          <button className="place__wastebasket-btn hover" type="button"></button>
+          <div className="place__info">
+            <h2 className="place__title"></h2>
+            <div className="place__like">
+              <button className="place__like-btn hover" type="button"></button>
+              <p className="place__like-count">111</p>
             </div>
+
+          </div>
         </li>
 
       </template>
