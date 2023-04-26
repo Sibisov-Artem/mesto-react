@@ -2,6 +2,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
+import ImagePopup from "./ImagePopup";
 
 
 function App() {  //функциональный компонент App
@@ -91,7 +92,9 @@ function App() {  //функциональный компонент App
         </div>
       </div> */}
 
-      <div className="popup popup_view">
+      <ImagePopup />
+
+      {/* <div className="popup popup_view">
 
         <figure className="popup__container-view">
           <button className="popup__close-btn hover" type="button"></button>
@@ -99,7 +102,7 @@ function App() {  //функциональный компонент App
           <figcaption className="popup__image-caption"></figcaption>
         </figure>
 
-      </div>
+      </div> */}
 
       <PopupWithForm
         name='confirmation-remove'
