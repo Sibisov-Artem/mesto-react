@@ -20,6 +20,23 @@ function App() {  //функциональный компонент App
 
       </div>
 
+      <PopupWithForm
+        name='profile'
+        title='Редактировать профиль'
+        submitText='Сохранить'
+
+        children={
+          <fieldset className="popup__input-container">
+            <input className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" required
+              minlength="2" maxlength="40" id="profileName" />
+            <span className="popup__input-error profileName-error"></span>
+            <input className="popup__input popup__input_el_description" type="text" name="info" placeholder="Профессия"
+              required minlength="2" maxlength="200" id="profileDescription" />
+            <span className="popup__input-error profileDescription-error"></span>
+          </fieldset>
+        }
+      />
+      {/* 
       <div className="popup popup_profile">
         <div className="popup__container">
           <button className="popup__close-btn hover" type="button"></button>
@@ -36,8 +53,26 @@ function App() {  //функциональный компонент App
             <button className="popup__submit-btn" type="submit">Сохранить</button>
           </form>
         </div>
-      </div>
+      </div> */}
 
+      <PopupWithForm
+        name='mesto'
+        title='Новое место'
+        submitText='Создать'
+
+        children={
+          <fieldset className="popup__input-container">
+            <input className="popup__input popup__input_el_mesto-title" type="text" name="name" placeholder="Название"
+              required minlength="2" maxlength="30" id="mestoTitle" />
+            <span className="popup__input-error mestoTitle-error"></span>
+            <input className="popup__input popup__input_el_mesto-url" type="url" name="link" placeholder="Ссылка на картинку"
+              required id="mestoUrlImage" />
+            <span className="popup__input-error mestoUrlImage-error"></span>
+          </fieldset>
+        }
+      />
+
+      {/* 
       <div className="popup popup_mesto">
         <div className="popup__container">
           <button className="popup__close-btn hover" type="button"></button>
@@ -54,7 +89,7 @@ function App() {  //функциональный компонент App
             <button className="popup__submit-btn" type="submit">Создать</button>
           </form>
         </div>
-      </div>
+      </div> */}
 
       <div className="popup popup_view">
 
@@ -66,6 +101,12 @@ function App() {  //функциональный компонент App
 
       </div>
 
+      <PopupWithForm
+        name='confirmation-remove'
+        title='Вы уверены?'
+        submitText='Да'
+      />
+      {/*       
       <div className="popup popup_confirmation-remove">
         <div className="popup__container">
           <button className="popup__close-btn hover" type="button"></button>
@@ -74,9 +115,23 @@ function App() {  //функциональный компонент App
             <button className="popup__submit-btn" type="submit">Да</button>
           </form>
         </div>
-      </div>
+      </div> */}
 
-      <div className="popup popup_avatar">
+      <PopupWithForm
+        name='avatar'
+        title='Обновить аватар'
+        submitText='Сохранить'
+
+        children={
+          <fieldset className="popup__input-container">
+            <input className="popup__input popup__input_avatar-url" type="url" name="avatar" placeholder="Ссылка на картинку"
+              required id="avatarUrl" />
+            <span className="popup__input-error avatarUrl-error"></span>
+          </fieldset>
+        }
+      />
+
+      {/* <div className="popup popup_avatar">
         <div className="popup__container">
           <button className="popup__close-btn hover" type="button"></button>
           <h2 className="popup__title">Обновить аватар</h2>
@@ -89,7 +144,7 @@ function App() {  //функциональный компонент App
             <button className="popup__submit-btn" type="submit">Сохранить</button>
           </form>
         </div>
-      </div>
+      </div> */}
 
       <template className="card-template">
 
