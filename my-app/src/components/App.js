@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
+import PopupWithForm from "./PopupWithForm";
 
 
 function App() {  //функциональный компонент App
@@ -23,7 +24,7 @@ function App() {  //функциональный компонент App
         <div className="popup__container">
           <button className="popup__close-btn hover" type="button"></button>
           <h2 className="popup__title">Редактировать профиль</h2>
-          <form className="popup__form popup__form_profile" name="formProfile">
+          <form className="popup__form popup__form_profile" name="profile">
             <fieldset className="popup__input-container">
               <input className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" required
                 minlength="2" maxlength="40" id="profileName" />
@@ -32,7 +33,7 @@ function App() {  //функциональный компонент App
                 required minlength="2" maxlength="200" id="profileDescription" />
               <span className="popup__input-error profileDescription-error"></span>
             </fieldset>
-            <button className="popup__submit-btn popup__save-btn" type="submit">Сохранить</button>
+            <button className="popup__submit-btn" type="submit">Сохранить</button>
           </form>
         </div>
       </div>
@@ -41,7 +42,7 @@ function App() {  //функциональный компонент App
         <div className="popup__container">
           <button className="popup__close-btn hover" type="button"></button>
           <h2 className="popup__title">Новое место</h2>
-          <form className="popup__form popup__form_mesto" name="form">
+          <form className="popup__form popup__form_mesto" name="mesto">
             <fieldset className="popup__input-container">
               <input className="popup__input popup__input_el_mesto-title" type="text" name="name" placeholder="Название"
                 required minlength="2" maxlength="30" id="mestoTitle" />
@@ -69,11 +70,10 @@ function App() {  //функциональный компонент App
         <div className="popup__container">
           <button className="popup__close-btn hover" type="button"></button>
           <h2 className="popup__title">Вы уверены?</h2>
-          <form className="popup__form popup__form_confirmation-remove" name="confirmationRemoveForm">
+          <form className="popup__form popup__form_confirmation-remove" name="confirmation-remove">
             <button className="popup__submit-btn" type="submit">Да</button>
           </form>
         </div>
-
       </div>
 
       <div className="popup popup_avatar">
@@ -89,7 +89,6 @@ function App() {  //функциональный компонент App
             <button className="popup__submit-btn" type="submit">Сохранить</button>
           </form>
         </div>
-
       </div>
 
       <template className="card-template">
