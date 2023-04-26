@@ -6,6 +6,20 @@ import ImagePopup from "./ImagePopup";
 
 
 function App() {  //функциональный компонент App
+
+  function handleEditAvatarClick() { // перенес из main
+    document.querySelector('.popup_avatar').classList.add('popup_opened');
+
+  }
+
+  function handleEditProfileClick() { // перенес из main
+    document.querySelector('.popup_profile').classList.add('popup_opened');
+  }
+
+  function handleAddPlaceClick() { // перенес из main
+    document.querySelector('.popup_mesto').classList.add('popup_opened');
+  }
+
   return (
 
     <div className="root">
@@ -14,7 +28,11 @@ function App() {  //функциональный компонент App
 
         <Header />
 
-        <Main />
+        <Main
+          onEditProfile={handleEditProfileClick}
+          onAddPlace={handleAddPlaceClick}
+          onEditAvatar={handleEditAvatarClick}
+        />
 
         <Footer />
 

@@ -1,24 +1,24 @@
-function Main() {
+function Main(props) {
 
-    function handleEditAvatarClick() {
-        document.querySelector('.popup_avatar').classList.add('popup_opened');
+    // function handleEditAvatarClick() {
+    // document.querySelector('.popup_avatar').classList.add('popup_opened');  //перенес в App
 
-    }
+    // }
 
-    function handleEditProfileClick() {
-        document.querySelector('.popup_profile').classList.add('popup_opened');
-    }
+    // function handleEditProfileClick() {
+    //     document.querySelector('.popup_profile').classList.add('popup_opened');   //перенес в App
+    // }
 
-    function handleAddPlaceClick() {
-        document.querySelector('.popup_mesto').classList.add('popup_opened');
-    }
+    // function handleAddPlaceClick() {
+    //     document.querySelector('.popup_mesto').classList.add('popup_opened');   //перенес в App
+    // }
 
     return (
         <main className="content">
 
             <section className="profile section page__section">
                 <div
-                    onClick={handleEditAvatarClick}
+                    onClick={props.onEditAvatar}
                     className="profile__avatar-wrapper">
 
                     {/* Вставки вида <% %> — синтаксис шаблона lodash */}
@@ -28,7 +28,7 @@ function Main() {
                 <div className="profile__info">
                     <h1 className="profile__name">Жак-Ив Кусто</h1>
                     <button
-                        onClick={handleEditProfileClick}
+                        onClick={props.onEditProfile}
                         className="profile__edit-btn hover"
                         type="button"
                     >
@@ -36,7 +36,7 @@ function Main() {
                     <p className="profile__description">Исследователь океана</p>
                 </div>
                 <button
-                    onClick={handleAddPlaceClick}
+                    onClick={props.onAddPlace}
                     className="profile__add-btn hover" type="button"></button>
             </section>
 
