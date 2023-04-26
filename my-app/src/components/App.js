@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
@@ -7,17 +8,21 @@ import ImagePopup from "./ImagePopup";
 
 function App() {  //функциональный компонент App
 
-  function handleEditAvatarClick() { // перенес из main
-    document.querySelector('.popup_avatar').classList.add('popup_opened');
-
-  }
-
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   function handleEditProfileClick() { // перенес из main
-    document.querySelector('.popup_profile').classList.add('popup_opened');
+    setIsEditProfilePopupOpen(true);
   }
 
+
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   function handleAddPlaceClick() { // перенес из main
-    document.querySelector('.popup_mesto').classList.add('popup_opened');
+    setIsAddPlacePopupOpen(true);
+  }
+
+
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  function handleEditAvatarClick() { // перенес из main
+    setIsEditAvatarPopupOpen(true);
   }
 
   return (
@@ -43,6 +48,7 @@ function App() {  //функциональный компонент App
         name='profile'
         title='Редактировать профиль'
         submitText='Сохранить'
+        isOpen={isEditProfilePopupOpen}
 
         children={
           <fieldset className="popup__input-container">
@@ -78,6 +84,7 @@ function App() {  //функциональный компонент App
         name='mesto'
         title='Новое место'
         submitText='Создать'
+        isOpen={isAddPlacePopupOpen}
 
         children={
           <fieldset className="popup__input-container">
@@ -142,6 +149,7 @@ function App() {  //функциональный компонент App
         name='avatar'
         title='Обновить аватар'
         submitText='Сохранить'
+        isOpen={isEditAvatarPopupOpen}
 
         children={
           <fieldset className="popup__input-container">
