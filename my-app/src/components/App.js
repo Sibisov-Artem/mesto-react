@@ -5,6 +5,7 @@ import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 
+
 import { api } from '../utils/Api'
 
 
@@ -38,6 +39,8 @@ function App() {  //функциональный компонент App
   const [userDescription, setUserDescription] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
 
+
+
   useEffect(() => {
     api.getUser()
       .then((data) => {
@@ -45,8 +48,32 @@ function App() {  //функциональный компонент App
         setUserName(data.name);
         setUserDescription(data.about);
         setUserAvatar(data.avatar);
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
       });
-  })
+  }, [{ handleEditAvatarClick }])
+
+
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    api.getInitialCards()
+      .then((data) => {
+        console.log(data);
+        const results = data.map((item) => ({
+          key: item._id,
+          nameCard: item.name,
+          likes: item.likes.length,
+          url: item.link,
+        }));
+        setCards(results);
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      });
+  }, [])
+
 
 
   return (
@@ -64,6 +91,7 @@ function App() {  //функциональный компонент App
           userName={userName}
           userDescription={userDescription}
           userAvatar={userAvatar}
+          cards={cards}
         />
 
         <Footer />
@@ -206,22 +234,26 @@ function App() {  //функциональный компонент App
         </div>
       </div> */}
 
-      <template className="card-template">
+
+
+
+
+      {/* <div className="card-template">
 
         <li className="place__card">
-          <img className="place__image" alt="" />
+          <img className="place__image" src={cards.url} alt={cards.nameCard} />
           <button className="place__wastebasket-btn hover" type="button"></button>
           <div className="place__info">
-            <h2 className="place__title"></h2>
+            <h2 className="place__title">{cards.nameCard}</h2>
             <div className="place__like">
               <button className="place__like-btn hover" type="button"></button>
-              <p className="place__like-count">111</p>
+              <p className="place__like-count">{cards.likes}</p>
             </div>
 
           </div>
         </li>
 
-      </template>
+      </div> */}
 
 
 

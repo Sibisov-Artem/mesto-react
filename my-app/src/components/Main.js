@@ -1,3 +1,5 @@
+import Card from './Card';
+
 function Main(props) {
 
     // function handleEditAvatarClick() {
@@ -41,6 +43,15 @@ function Main(props) {
 
             <section className="place section page__section" aria-label="Места">
                 <ul className="place__grid">
+
+                    {props.cards.map((card) => (
+                        <Card
+                            key={card.key}
+                            url={card.url}
+                            nameCard={card.nameCard}
+                            likes={card.likes}
+                        />))}
+
                 </ul>
             </section>
 
