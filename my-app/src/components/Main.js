@@ -21,19 +21,18 @@ function Main(props) {
                     onClick={props.onEditAvatar}
                     className="profile__avatar-wrapper">
 
-                    {/* Вставки вида <% %> — синтаксис шаблона lodash */}
-                    <img className="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="аватарка" />
+                    <img className="profile__avatar" src={props.userAvatar} alt="аватарка" />
                 </div>
 
                 <div className="profile__info">
-                    <h1 className="profile__name">Жак-Ив Кусто</h1>
+                    <h1 className="profile__name">{props.userName}</h1>
                     <button
                         onClick={props.onEditProfile}
                         className="profile__edit-btn hover"
                         type="button"
                     >
                     </button>
-                    <p className="profile__description">Исследователь океана</p>
+                    <p className="profile__description">{props.userDescription}</p>
                 </div>
                 <button
                     onClick={props.onAddPlace}

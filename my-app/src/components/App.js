@@ -1,9 +1,11 @@
-import { useState } from 'react';
-import Header from "./Header";
-import Main from "./Main";
-import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
-import ImagePopup from "./ImagePopup";
+import { useState, useEffect } from 'react';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
+
+import { api } from '../utils/Api'
 
 
 function App() {  //функциональный компонент App
@@ -32,6 +34,21 @@ function App() {  //функциональный компонент App
     setIsEditAvatarPopupOpen(false);
   }
 
+  const [userName, setUserName] = useState('')
+  const [userDescription, setUserDescription] = useState('')
+  const [userAvatar, setUserAvatar] = useState('')
+
+  useEffect(() => {
+    api.getUser()
+      .then((data) => {
+        console.log(data);
+        setUserName(data.name);
+        setUserDescription(data.about);
+        setUserAvatar(data.avatar);
+      });
+  })
+
+
   return (
 
     <div className="root">
@@ -44,6 +61,9 @@ function App() {  //функциональный компонент App
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
+          userName={userName}
+          userDescription={userDescription}
+          userAvatar={userAvatar}
         />
 
         <Footer />
@@ -57,6 +77,7 @@ function App() {  //функциональный компонент App
         submitText='Сохранить'
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
+
 
         children={
           <fieldset className="popup__input-container">
