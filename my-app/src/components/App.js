@@ -9,20 +9,27 @@ import ImagePopup from "./ImagePopup";
 function App() {  //функциональный компонент App
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  function handleEditProfileClick() { // перенес из main
+  function handleEditProfileClick() { // обработчик открытия попап профиля
     setIsEditProfilePopupOpen(true);
   }
 
 
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  function handleAddPlaceClick() { // перенес из main
+  function handleAddPlaceClick() { // обработчик открытия попап добавления места
     setIsAddPlacePopupOpen(true);
   }
 
 
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  function handleEditAvatarClick() { // перенес из main
+  function handleEditAvatarClick() { // обработчик открытия попап аватарки 
     setIsEditAvatarPopupOpen(true);
+  }
+
+
+  function closeAllPopups() {
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
   }
 
   return (
@@ -49,6 +56,7 @@ function App() {  //функциональный компонент App
         title='Редактировать профиль'
         submitText='Сохранить'
         isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
 
         children={
           <fieldset className="popup__input-container">
@@ -85,6 +93,7 @@ function App() {  //функциональный компонент App
         title='Новое место'
         submitText='Создать'
         isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
 
         children={
           <fieldset className="popup__input-container">
@@ -150,6 +159,7 @@ function App() {  //функциональный компонент App
         title='Обновить аватар'
         submitText='Сохранить'
         isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
 
         children={
           <fieldset className="popup__input-container">
