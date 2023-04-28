@@ -9,7 +9,6 @@ function Main(props) {
     const [userAvatar, setUserAvatar] = useState('')
 
 
-
     useEffect(() => {
         api.getUser()
             .then((data) => {
