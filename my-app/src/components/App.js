@@ -6,8 +6,6 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 
 
-import { api } from '../utils/Api'
-
 
 function App() {  //функциональный компонент App
 
@@ -35,45 +33,6 @@ function App() {  //функциональный компонент App
     setIsEditAvatarPopupOpen(false);
   }
 
-  const [userName, setUserName] = useState('')
-  const [userDescription, setUserDescription] = useState('')
-  const [userAvatar, setUserAvatar] = useState('')
-
-
-
-  useEffect(() => {
-    api.getUser()
-      .then((data) => {
-        console.log(data);
-        setUserName(data.name);
-        setUserDescription(data.about);
-        setUserAvatar(data.avatar);
-      })
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
-  }, [{ handleEditAvatarClick }])
-
-
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    api.getInitialCards()
-      .then((data) => {
-        console.log(data);
-        const results = data.map((item) => ({
-          key: item._id,
-          nameCard: item.name,
-          likes: item.likes.length,
-          url: item.link,
-        }));
-        setCards(results);
-      })
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
-  }, [])
-
 
 
   return (
@@ -88,10 +47,6 @@ function App() {  //функциональный компонент App
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
-          userName={userName}
-          userDescription={userDescription}
-          userAvatar={userAvatar}
-          cards={cards}
         />
 
         <Footer />

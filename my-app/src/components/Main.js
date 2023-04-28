@@ -1,19 +1,48 @@
+import { useState, useEffect } from 'react';
+import { api } from '../utils/Api'
 import Card from './Card';
 
 function Main(props) {
 
-    // function handleEditAvatarClick() {
-    // document.querySelector('.popup_avatar').classList.add('popup_opened');  //перенес в App
+    const [userName, setUserName] = useState('')
+    const [userDescription, setUserDescription] = useState('')
+    const [userAvatar, setUserAvatar] = useState('')
 
-    // }
 
-    // function handleEditProfileClick() {
-    //     document.querySelector('.popup_profile').classList.add('popup_opened');   //перенес в App
-    // }
 
-    // function handleAddPlaceClick() {
-    //     document.querySelector('.popup_mesto').classList.add('popup_opened');   //перенес в App
-    // }
+    useEffect(() => {
+        api.getUser()
+            .then((data) => {
+                console.log(data);
+                setUserName(data.name);
+                setUserDescription(data.about);
+                setUserAvatar(data.avatar);
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            });
+    })
+
+
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        api.getInitialCards()
+            .then((data) => {
+                console.log(data);
+                const results = data.map((item) => ({
+                    key: item._id,
+                    nameCard: item.name,
+                    likes: item.likes.length,
+                    url: item.link,
+                }));
+                setCards(results);
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            });
+    }, [])
+
 
     return (
         <main className="content">
@@ -23,18 +52,18 @@ function Main(props) {
                     onClick={props.onEditAvatar}
                     className="profile__avatar-wrapper">
 
-                    <img className="profile__avatar" src={props.userAvatar} alt="аватарка" />
+                    <img className="profile__avatar" src={userAvatar} alt="аватарка" />
                 </div>
 
                 <div className="profile__info">
-                    <h1 className="profile__name">{props.userName}</h1>
+                    <h1 className="profile__name">{userName}</h1>
                     <button
                         onClick={props.onEditProfile}
                         className="profile__edit-btn hover"
                         type="button"
                     >
                     </button>
-                    <p className="profile__description">{props.userDescription}</p>
+                    <p className="profile__description">{userDescription}</p>
                 </div>
                 <button
                     onClick={props.onAddPlace}
@@ -44,7 +73,7 @@ function Main(props) {
             <section className="place section page__section" aria-label="Места">
                 <ul className="place__grid">
 
-                    {props.cards.map((card) => (
+                    {cards.map((card) => (
                         <Card
                             key={card.key}
                             url={card.url}
