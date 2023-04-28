@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -26,11 +26,17 @@ function App() {  //функциональный компонент App
     setIsEditAvatarPopupOpen(true);
   }
 
+  const [selectedCard, setSelectedCard] = useState(false);
+  function handleCardClick(props) {
+    setSelectedCard(props);
+  }
+
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setSelectedCard(false);
   }
 
 
@@ -47,6 +53,7 @@ function App() {  //функциональный компонент App
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick}
+          onCardClick={handleCardClick}
         />
 
         <Footer />
@@ -130,7 +137,10 @@ function App() {  //функциональный компонент App
         </div>
       </div> */}
 
-      <ImagePopup />
+      <ImagePopup
+        onClose={closeAllPopups}
+        card={selectedCard}
+      />
 
       {/* <div className="popup popup_view">
 

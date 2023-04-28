@@ -1,8 +1,15 @@
 function Card(props) {
+
+    function handleClick() {
+        props.onCardClick(props);
+    }
+
     return (
 
         <li className="place__card">
-            <img className="place__image" src={props.url} alt={props.nameCard} />
+            <img
+                onClick={handleClick}
+                className="place__image" src={props.url} alt={props.nameCard} />
             <button className="place__wastebasket-btn hover" type="button"></button>
             <div className="place__info">
                 <h2 className="place__title">{props.nameCard}</h2>
