@@ -72,10 +72,10 @@ function App() {  //функциональный компонент App
         children={
           <fieldset className="popup__input-container">
             <input className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" required
-              minlength="2" maxlength="40" id="profileName" />
+              minLength="2" maxLength="40" id="profileName" />
             <span className="popup__input-error profileName-error"></span>
             <input className="popup__input popup__input_el_description" type="text" name="info" placeholder="Профессия"
-              required minlength="2" maxlength="200" id="profileDescription" />
+              required minLength="2" maxLength="200" id="profileDescription" />
             <span className="popup__input-error profileDescription-error"></span>
           </fieldset>
         }
@@ -88,10 +88,10 @@ function App() {  //функциональный компонент App
           <form className="popup__form popup__form_profile" name="profile">
             <fieldset className="popup__input-container">
               <input className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" required
-                minlength="2" maxlength="40" id="profileName" />
+                minLength="2" maxLength="40" id="profileName" />
               <span className="popup__input-error profileName-error"></span>
               <input className="popup__input popup__input_el_description" type="text" name="info" placeholder="Профессия"
-                required minlength="2" maxlength="200" id="profileDescription" />
+                required minLength="2" maxLength="200" id="profileDescription" />
               <span className="popup__input-error profileDescription-error"></span>
             </fieldset>
             <button className="popup__submit-btn" type="submit">Сохранить</button>
@@ -109,7 +109,7 @@ function App() {  //функциональный компонент App
         children={
           <fieldset className="popup__input-container">
             <input className="popup__input popup__input_el_mesto-title" type="text" name="name" placeholder="Название"
-              required minlength="2" maxlength="30" id="mestoTitle" />
+              required minLength="2" maxLength="30" id="mestoTitle" />
             <span className="popup__input-error mestoTitle-error"></span>
             <input className="popup__input popup__input_el_mesto-url" type="url" name="link" placeholder="Ссылка на картинку"
               required id="mestoUrlImage" />
@@ -126,7 +126,7 @@ function App() {  //функциональный компонент App
           <form className="popup__form popup__form_mesto" name="mesto">
             <fieldset className="popup__input-container">
               <input className="popup__input popup__input_el_mesto-title" type="text" name="name" placeholder="Название"
-                required minlength="2" maxlength="30" id="mestoTitle" />
+                required minLength="2" maxLength="30" id="mestoTitle" />
               <span className="popup__input-error mestoTitle-error"></span>
               <input className="popup__input popup__input_el_mesto-url" type="url" name="link" placeholder="Ссылка на картинку"
                 required id="mestoUrlImage" />
