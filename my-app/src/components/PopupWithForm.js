@@ -1,15 +1,16 @@
-function PopupWithForm(props) {
+function PopupWithForm({ name, isOpen, onClose, title, children, submitText }) {
     return (
-        <div className={`popup popup_${props.name} ${props.isOpen && 'popup_opened'}`}>
+        <div className={`popup popup_${name} ${isOpen && 'popup_opened'}`}>
 
             <div className="popup__container">
                 <button
-                    onClick={props.onClose}
-                    className="popup__close-btn hover" type="button"></button>
-                <h2 className="popup__title">{props.title}</h2>
-                <form className={`popup__form popup__form_${props.name}`} name={`${props.name}`}>
-                    {props.children}
-                    <button className="popup__submit-btn" type="submit">{props.submitText}</button>
+                    onClick={onClose}
+                    // Можно использовать самозакрывающиеся теги, если нет children (нет ничего между тегов). 
+                    className="popup__close-btn hover" type="button" />
+                <h2 className="popup__title">{title}</h2>
+                <form className={`popup__form popup__form_${name}`} name={`${name}`}>
+                    {children}
+                    <button className="popup__submit-btn" type="submit">{submitText}</button>
                 </form>
             </div>
 

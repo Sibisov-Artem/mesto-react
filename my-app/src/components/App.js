@@ -26,7 +26,7 @@ function App() {  //функциональный компонент App
     setIsEditAvatarPopupOpen(true);
   }
 
-  const [selectedCard, setSelectedCard] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({ nameCard: '', url: '' });
   function handleCardClick(props) {
     setSelectedCard(props);
   }
@@ -36,7 +36,7 @@ function App() {  //функциональный компонент App
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard(false);
+    setSelectedCard({ nameCard: '', url: '' });
   }
 
 
@@ -65,19 +65,22 @@ function App() {  //функциональный компонент App
         submitText='Сохранить'
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
-
-        children={
-          <fieldset className="popup__input-container">
-            <input className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" required
-              minLength="2" maxLength="40" id="profileName" />
-            <span className="popup__input-error profileName-error"></span>
-            <input className="popup__input popup__input_el_description" type="text" name="info" placeholder="Профессия"
-              required minLength="2" maxLength="200" id="profileDescription" />
-            <span className="popup__input-error profileDescription-error"></span>
-          </fieldset>
-        }
-      />
-
+      >
+        {/* можно обойтись без children таким образом:
+      <PopupWithForm …  >
+        <input …  />
+        <input…   />
+      <PopupWithForm />
+       */}
+        <fieldset className="popup__input-container">
+          <input className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" required
+            minLength="2" maxLength="40" id="profileName" />
+          <span className="popup__input-error profileName-error"></span>
+          <input className="popup__input popup__input_el_description" type="text" name="info" placeholder="Профессия"
+            required minLength="2" maxLength="200" id="profileDescription" />
+          <span className="popup__input-error profileDescription-error"></span>
+        </fieldset>
+      </PopupWithForm>
 
       <PopupWithForm
         name='mesto'

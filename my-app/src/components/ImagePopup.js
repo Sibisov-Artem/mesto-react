@@ -1,7 +1,7 @@
 function ImagePopup(props) {
     return (
 
-        <div className={`popup popup_view ${props.card && 'popup_opened'}`}>
+        <div className={`popup popup_view ${props.card.nameCard && 'popup_opened'}`}>
 
             <figure className="popup__container-view">
                 <button
