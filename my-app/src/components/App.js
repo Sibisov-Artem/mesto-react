@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { api } from '../utils/Api';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -30,6 +31,19 @@ function App() {  //функциональный компонент App
   function handleCardClick(props) {
     setSelectedCard(props);
   }
+
+  const [currentUser, setCurrentUser] = useState({name: '', about: '', _id: ''});
+
+  useEffect(() => {
+    api.getUser()
+      .then((data) => {
+        console.log(data);
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      });
+  }, [])
 
 
   function closeAllPopups() {

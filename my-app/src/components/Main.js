@@ -12,7 +12,6 @@ function Main(props) {
     useEffect(() => {
         api.getUser()
             .then((data) => {
-                console.log(data);
                 setUserName(data.name);
                 setUserDescription(data.about);
                 setUserAvatar(data.avatar);
@@ -20,6 +19,9 @@ function Main(props) {
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
             });
+            return () => {
+                console.log('Сброс')
+            }
     }, []) // массив зависимостей для ограничения количества срабатываний эффекта. Пустой массив означает, что нужно только один раз сработать при монтировании компонента.
 
 
@@ -28,7 +30,6 @@ function Main(props) {
     useEffect(() => {
         api.getInitialCards()
             .then((data) => {
-                console.log(data);
                 const results = data.map((item) => ({
                     key: item._id,
                     nameCard: item.name,
@@ -43,9 +44,10 @@ function Main(props) {
     }, [])
 
 
-    return (
+    return ( 
+        
         <main className="content">
-
+{/* {console.log('useEffect after return')} */}
             <section className="profile section page__section">
                 <div
                     onClick={props.onEditAvatar}
