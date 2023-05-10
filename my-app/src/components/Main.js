@@ -1,28 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { api } from '../utils/Api'
+
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
 import Card from './Card';
 
 function Main(props) {
 
-    const [userName, setUserName] = useState('')
-    const [userDescription, setUserDescription] = useState('')
-    const [userAvatar, setUserAvatar] = useState('')
+    // const [userName, setUserName] = useState('')
+    // const [userDescription, setUserDescription] = useState('')
+    // const [userAvatar, setUserAvatar] = useState('')
+
+    const сurrentUser = useContext(CurrentUserContext);
 
 
-    useEffect(() => {
-        api.getUser()
-            .then((data) => {
-                setUserName(data.name);
-                setUserDescription(data.about);
-                setUserAvatar(data.avatar);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
-            return () => {
-                console.log('Сброс')
-            }
-    }, []) // массив зависимостей для ограничения количества срабатываний эффекта. Пустой массив означает, что нужно только один раз сработать при монтировании компонента.
+    // useEffect(() => {
+    //     api.getUser()
+    //         .then((data) => {
+    //             setUserName(data.name);
+    //             setUserDescription(data.about);
+    //             setUserAvatar(data.avatar);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err); // выведем ошибку в консоль
+    //         });
+    //     return () => {
+    //         console.log('Сброс')
+    //     }
+    // }, []) // массив зависимостей для ограничения количества срабатываний эффекта. Пустой массив означает, что нужно только один раз сработать при монтировании компонента.
 
 
     const [cards, setCards] = useState([]);
@@ -44,27 +49,27 @@ function Main(props) {
     }, [])
 
 
-    return ( 
-        
+    return (
+
         <main className="content">
-{/* {console.log('useEffect after return')} */}
+            {/* {console.log('useEffect after return')} */}
             <section className="profile section page__section">
                 <div
                     onClick={props.onEditAvatar}
                     className="profile__avatar-wrapper">
 
-                    <img className="profile__avatar" src={userAvatar} alt="аватарка" />
+                    <img className="profile__avatar" src={сurrentUser.avatar} alt="аватарка" />
                 </div>
 
                 <div className="profile__info">
-                    <h1 className="profile__name">{userName}</h1>
+                    <h1 className="profile__name">{сurrentUser.name}</h1>
                     <button
                         onClick={props.onEditProfile}
                         className="profile__edit-btn hover"
                         type="button"
                     >
                     </button>
-                    <p className="profile__description">{userDescription}</p>
+                    <p className="profile__description">{сurrentUser.about}</p>
                 </div>
                 <button
                     onClick={props.onAddPlace}
