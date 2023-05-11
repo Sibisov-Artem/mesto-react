@@ -15,7 +15,7 @@ function Card(props) {
     const cardLikeButtonClassName = (
         `place__like-btn hover ${isLiked && 'place__like-btn_active'}`
     );
-
+    
     function handleClick() {
         props.onCardClick(props);
     }
@@ -37,7 +37,7 @@ function Card(props) {
                 <h2 className="place__title">{props.nameCard}</h2>
                 <div className="place__like">
                     <button className={cardLikeButtonClassName} type="button"></button>
-                    <p className="place__like-count">{props.likes}</p>
+                    <p className="place__like-count">{props.likes.length}</p>
                 </div>
 
             </div>

@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
-import { api } from '../utils/Api'
+import { useContext } from 'react';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -30,24 +29,7 @@ function Main(props) {
     // }, []) // массив зависимостей для ограничения количества срабатываний эффекта. Пустой массив означает, что нужно только один раз сработать при монтировании компонента.
 
 
-    const [cards, setCards] = useState([]);
 
-    useEffect(() => {
-        api.getInitialCards()
-            .then((data) => {
-                console.log(data)
-                const results = data.map((item) => ({
-                    key: item._id,
-                    nameCard: item.name,
-                    likes: item.likes.length,
-                    url: item.link,
-                }));
-                setCards(results);
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
-            });
-    }, [])
 
 
     return (
@@ -80,7 +62,7 @@ function Main(props) {
             <section className="place section page__section" aria-label="Места">
                 <ul className="place__grid">
 
-                    {cards.map((card) => (
+                    {props.cards.map((card) => (
                         <Card
                             key={card.key}
                             url={card.url}

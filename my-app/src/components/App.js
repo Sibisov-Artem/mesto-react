@@ -12,6 +12,27 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {  //функциональный компонент App
 
+  const [cards, setCards] = useState([]);
+
+
+  useEffect(() => {
+    api.getInitialCards()
+      .then((data) => {
+        console.log(data)
+        const results = data.map((item) => ({
+          key: item._id,
+          nameCard: item.name,
+          likes: item.likes,
+          url: item.link,
+        }));
+        setCards(results);
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      });
+  }, [])
+
+
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   function handleEditProfileClick() { // обработчик открытия попап профиля
     setIsEditProfilePopupOpen(true);
@@ -66,6 +87,7 @@ function App() {  //функциональный компонент App
           <Header />
 
           <Main
+            cards={cards}
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}
