@@ -35,6 +35,7 @@ function Main(props) {
     useEffect(() => {
         api.getInitialCards()
             .then((data) => {
+                console.log(data)
                 const results = data.map((item) => ({
                     key: item._id,
                     nameCard: item.name,
