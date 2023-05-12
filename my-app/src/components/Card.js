@@ -6,7 +6,7 @@ function Card(props) {
     const currentUser = useContext(CurrentUserContext);
 
     // Определяем, являемся ли мы владельцем текущей карточки
-    const isOwn = props.card._id === currentUser._id;
+    const isOwn = props.card.owner._id === currentUser._id;
 
     // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
     const isLiked = props.card.likes.some(i => i._id === currentUser._id);
@@ -15,18 +15,19 @@ function Card(props) {
     const cardLikeButtonClassName = (
         `place__like-btn hover ${isLiked && 'place__like-btn_active'}`
     );
-    
+
     function handleClick() {
         props.onCardClick(props);
     }
 
-    function handleDeleteClick() {
-        console.log('типа должна удалиться');
-    }
-
     const handleLikeClick = () => {
         props.onCardLike(props.card);
-      };
+    };
+
+    const handleDeleteClick = () => {
+        console.log('типа должна удалиться');
+        props.onCardDelete(props.card);
+    };
 
     return (
 

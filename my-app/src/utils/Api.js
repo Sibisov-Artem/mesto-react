@@ -82,17 +82,17 @@ class Api {
 
     return isLiked ? this.addLike(cardId) : this.deleteLike(cardId)
 
-// if (isLiked) {
-//   return this._request(`${this.url}/cards/${cardId}/likes`, {
-//         method: 'PUT',
-//         headers: this.headers,
-//       })
-// } else {
-//   return this._request(`${this.url}/cards/${cardId}/likes`, {
-//         method: 'DELETE',
-//         headers: this.headers,
-//       })
-// }
+    // if (isLiked) {
+    //   return this._request(`${this.url}/cards/${cardId}/likes`, {
+    //         method: 'PUT',
+    //         headers: this.headers,
+    //       })
+    // } else {
+    //   return this._request(`${this.url}/cards/${cardId}/likes`, {
+    //         method: 'DELETE',
+    //         headers: this.headers,
+    //       })
+    // }
 
 
   }

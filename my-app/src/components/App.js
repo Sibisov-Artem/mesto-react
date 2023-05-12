@@ -71,6 +71,16 @@ function App() {  //функциональный компонент App
       });
   }
 
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then(() => {
+      // обновите стейт cards - удаление карточки через filter (не пропускаем свою карточку)
+      setCards((state) => state.filter((c) => c._id !== card._id));
+    })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      });
+  }
+
   const [currentUser, setCurrentUser] = useState({ name: '', about: '', _id: '' });
 
   useEffect(() => {
@@ -108,8 +118,8 @@ function App() {  //функциональный компонент App
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}
             onCardClick={handleCardClick}
-            // задал функцию handleCardLike в onCardLike:
             onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
 
           <Footer />

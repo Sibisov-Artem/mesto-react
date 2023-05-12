@@ -73,6 +73,8 @@ function Main(props) {
                             onCardClick={props.onCardClick}
                             // добавить пропс onCardLike для компонента Card
                             onCardLike={props.onCardLike}
+                            // добавить пропс onCardDelete для компонента Card
+                            onCardDelete={props.onCardDelete}
                         />))}
 
                 </ul>
