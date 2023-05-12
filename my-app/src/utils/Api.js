@@ -78,6 +78,25 @@ class Api {
     })
   }
 
+  changeLikeCardStatus(cardId, isLiked) {
+
+    return isLiked ? this.deleteLike(cardId) : this.addLike(cardId)
+
+// if (isLiked) {
+//   return this._request(`${this.url}/cards/${cardId}/likes`, {
+//         method: 'PUT',
+//         headers: this.headers,
+//       })
+// } else {
+//   return this._request(`${this.url}/cards/${cardId}/likes`, {
+//         method: 'DELETE',
+//         headers: this.headers,
+//       })
+// }
+
+
+  }
+
   changeAvatar(inputData) {
     return this._request(`${this.url}/users/me/avatar`, {
       method: 'PATCH',

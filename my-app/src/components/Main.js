@@ -10,7 +10,7 @@ function Main(props) {
     // const [userDescription, setUserDescription] = useState('')
     // const [userAvatar, setUserAvatar] = useState('')
 
-    const сurrentUser = useContext(CurrentUserContext);
+    const currentUser = useContext(CurrentUserContext);
 
 
     // useEffect(() => {
@@ -41,18 +41,18 @@ function Main(props) {
                     onClick={props.onEditAvatar}
                     className="profile__avatar-wrapper">
 
-                    <img className="profile__avatar" src={сurrentUser.avatar} alt="аватарка" />
+                    <img className="profile__avatar" src={currentUser.avatar} alt="аватарка" />
                 </div>
 
                 <div className="profile__info">
-                    <h1 className="profile__name">{сurrentUser.name}</h1>
+                    <h1 className="profile__name">{currentUser.name}</h1>
                     <button
                         onClick={props.onEditProfile}
                         className="profile__edit-btn hover"
                         type="button"
                     >
                     </button>
-                    <p className="profile__description">{сurrentUser.about}</p>
+                    <p className="profile__description">{currentUser.about}</p>
                 </div>
                 <button
                     onClick={props.onAddPlace}
@@ -64,11 +64,14 @@ function Main(props) {
 
                     {props.cards.map((card) => (
                         <Card
+                            owner={card.owner}
                             key={card.key}
                             url={card.url}
                             nameCard={card.nameCard}
                             likes={card.likes}
                             onCardClick={props.onCardClick}
+                            // добавить пропс onCardLike для компонента Card
+                            onCardLike={props.onCardLike}
                         />))}
 
                 </ul>

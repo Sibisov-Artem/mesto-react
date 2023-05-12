@@ -6,7 +6,7 @@ function Card(props) {
     const currentUser = useContext(CurrentUserContext);
 
     // Определяем, являемся ли мы владельцем текущей карточки
-    const isOwn = props.key === currentUser._id;
+    const isOwn = props.owner._id === currentUser._id;
 
     // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
     const isLiked = props.likes.some(i => i._id === currentUser._id);
@@ -24,6 +24,10 @@ function Card(props) {
         console.log('типа должна удалиться');
     }
 
+    const handleLikeClick = () => {
+        props.onCardLike(props);
+      };
+
     return (
 
         <li className="place__card">
@@ -36,7 +40,7 @@ function Card(props) {
             <div className="place__info">
                 <h2 className="place__title">{props.nameCard}</h2>
                 <div className="place__like">
-                    <button className={cardLikeButtonClassName} type="button"></button>
+                    <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick}></button>
                     <p className="place__like-count">{props.likes.length}</p>
                 </div>
 
