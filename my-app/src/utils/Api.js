@@ -80,7 +80,7 @@ class Api {
 
   changeLikeCardStatus(cardId, isLiked) {
 
-    return isLiked ? this.deleteLike(cardId) : this.addLike(cardId)
+    return isLiked ? this.addLike(cardId) : this.deleteLike(cardId)
 
 // if (isLiked) {
 //   return this._request(`${this.url}/cards/${cardId}/likes`, {
