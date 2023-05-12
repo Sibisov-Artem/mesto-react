@@ -64,11 +64,12 @@ function Main(props) {
 
                     {props.cards.map((card) => (
                         <Card
-                            owner={card.owner}
-                            key={card.key}
-                            url={card.url}
-                            nameCard={card.nameCard}
-                            likes={card.likes}
+                            card={card}
+                            // owner={card.owner}
+                            key={card._id}
+                            // url={card.url}
+                            // nameCard={card.nameCard}
+                            // likes={card.likes}
                             onCardClick={props.onCardClick}
                             // добавить пропс onCardLike для компонента Card
                             onCardLike={props.onCardLike}

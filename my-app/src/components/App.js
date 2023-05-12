@@ -19,14 +19,15 @@ function App() {  //функциональный компонент App
     api.getInitialCards()
       .then((data) => {
         console.log(data)
-        const results = data.map((item) => ({
-          owner: item.owner._id,
-          key: item._id,
-          nameCard: item.name,
-          likes: item.likes,
-          url: item.link,
-        }));
-        setCards(results);
+
+        // const results = data.map((item) => ({
+        //   owner: item.owner._id,
+        //   key: item._id,
+        //   nameCard: item.name,
+        //   likes: item.likes,
+        //   url: item.link,
+        // }));
+        setCards(data);
       })
       .catch((err) => {
         console.log(err); // выведем ошибку в консоль
