@@ -17,7 +17,7 @@ function Card(props) {
     );
 
     function handleClick() {
-        props.onCardClick(props);
+        props.onCardClick(props.card);
     }
 
     const handleLikeClick = () => {
@@ -25,7 +25,6 @@ function Card(props) {
     };
 
     const handleDeleteClick = () => {
-        console.log('типа должна удалиться');
         props.onCardDelete(props.card);
     };
 

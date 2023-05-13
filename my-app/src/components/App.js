@@ -45,7 +45,7 @@ function App() {  //функциональный компонент App
     setIsEditAvatarPopupOpen(true);
   }
 
-  const [selectedCard, setSelectedCard] = useState({ nameCard: '', url: '' });
+  const [selectedCard, setSelectedCard] = useState({ name: '', link: '' });
   function handleCardClick(props) {
     setSelectedCard(props);
   }
@@ -124,7 +124,7 @@ function App() {  //функциональный компонент App
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setSelectedCard({ nameCard: '', url: '' });
+    setSelectedCard({ name: '', link: '' });
   }
 
 
