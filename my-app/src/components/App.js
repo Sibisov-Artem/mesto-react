@@ -5,6 +5,7 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -126,28 +127,7 @@ function App() {  //функциональный компонент App
 
         </div>
 
-        <PopupWithForm
-          name='profile'
-          title='Редактировать профиль'
-          submitText='Сохранить'
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-        >
-          {/* можно обойтись без children таким образом:
-      <PopupWithForm …  >
-        <input …  />
-        <input…   />
-      <PopupWithForm />
-       */}
-          <fieldset className="popup__input-container">
-            <input className="popup__input popup__input_el_name" type="text" name="name" placeholder="Имя" required
-              minLength="2" maxLength="40" id="profileName" />
-            <span className="popup__input-error profileName-error"></span>
-            <input className="popup__input popup__input_el_description" type="text" name="info" placeholder="Профессия"
-              required minLength="2" maxLength="200" id="profileDescription" />
-            <span className="popup__input-error profileDescription-error"></span>
-          </fieldset>
-        </PopupWithForm>
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
 
         <PopupWithForm
           name='mesto'
