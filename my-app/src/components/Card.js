@@ -34,12 +34,12 @@ function Card(props) {
         <li className="place__card">
             <img
                 onClick={handleClick}
-                className="place__image" src={props.card.link} alt={props.nameCard} />
+                className="place__image" src={props.card.link} alt={props.card.name} />
 
             {/* // Далее в разметке используем переменную для условного рендеринга - если карточка наша показываем кнопку удаления */}
             {isOwn && <button className="place__wastebasket-btn hover" type="button" onClick={handleDeleteClick}></button>}
             <div className="place__info">
-                <h2 className="place__title">{props.nameCard}</h2>
+                <h2 className="place__title">{props.card.name}</h2>
                 <div className="place__like">
                     <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick}></button>
                     <p className="place__like-count">{props.card.likes.length}</p>

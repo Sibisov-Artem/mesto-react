@@ -7,6 +7,7 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -120,6 +121,16 @@ function App() {  //функциональный компонент App
     closeAllPopups();
   }
 
+  function handleAddPlaceSubmit(inputData) {
+    api.addNewCard(inputData)
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    closeAllPopups();
+  }
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
@@ -158,23 +169,10 @@ function App() {  //функциональный компонент App
           onUpdateUser={handleUpdateUser}
         />
 
-        <PopupWithForm
-          name='mesto'
-          title='Новое место'
-          submitText='Создать'
+        <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-
-          children={
-            <fieldset className="popup__input-container">
-              <input className="popup__input popup__input_el_mesto-title" type="text" name="name" placeholder="Название"
-                required minLength="2" maxLength="30" id="mestoTitle" />
-              <span className="popup__input-error mestoTitle-error"></span>
-              <input className="popup__input popup__input_el_mesto-url" type="url" name="link" placeholder="Ссылка на картинку"
-                required id="mestoUrlImage" />
-              <span className="popup__input-error mestoUrlImage-error"></span>
-            </fieldset>
-          }
+          onAddPlace={handleAddPlaceSubmit}
         />
 
 
