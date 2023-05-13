@@ -95,6 +95,18 @@ function App() {  //функциональный компонент App
       });
   }, [])
 
+  function handleUpdateUser(inputData) {
+    api.editUser(inputData)
+      .then((data) => {
+        setCurrentUser(data);
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    closeAllPopups();
+  }
+
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
@@ -127,7 +139,11 @@ function App() {  //функциональный компонент App
 
         </div>
 
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+        <EditProfilePopup
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
+        />
 
         <PopupWithForm
           name='mesto'

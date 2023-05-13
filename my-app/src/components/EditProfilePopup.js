@@ -29,6 +29,17 @@ function EditProfilePopup(props) {
         setDescription(currentUser.about);
     }, [currentUser]);
 
+    function handleSubmit(e) {
+        // Запрещаем браузеру переходить по адресу формы
+        e.preventDefault();
+
+        // Передаём значения управляемых компонентов во внешний обработчик
+        props.onUpdateUser({
+            name,
+            about: description,
+        });
+    }
+
     return (
         <PopupWithForm
             name='profile'
@@ -36,6 +47,7 @@ function EditProfilePopup(props) {
             submitText='Сохранить'
             isOpen={props.isOpen}
             onClose={props.onClose}
+            onSubmit={handleSubmit}
         >
             {/* можно обойтись без children таким образом:
       <PopupWithForm …  >

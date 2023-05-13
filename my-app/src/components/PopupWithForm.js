@@ -1,4 +1,4 @@
-function PopupWithForm({ name, isOpen, onClose, title, children, submitText }) {
+function PopupWithForm({ name, isOpen, onClose, title, children, submitText, onSubmit }) {
     return (
         <div className={`popup popup_${name} ${isOpen && 'popup_opened'}`}>
 
@@ -8,7 +8,8 @@ function PopupWithForm({ name, isOpen, onClose, title, children, submitText }) {
                     // Можно использовать самозакрывающиеся теги, если нет children (нет ничего между тегов). 
                     className="popup__close-btn hover" type="button" />
                 <h2 className="popup__title">{title}</h2>
-                <form className={`popup__form popup__form_${name}`} name={`${name}`}>
+                <form className={`popup__form popup__form_${name}`} name={`${name}`}
+                    onSubmit={onSubmit}>
                     {children}
                     <button className="popup__submit-btn" type="submit">{submitText}</button>
                 </form>
