@@ -12,7 +12,6 @@ import AddPlacePopup from './AddPlacePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
-
 function App() {  //функциональный компонент App
 
   const [cards, setCards] = useState([]);
@@ -21,15 +20,6 @@ function App() {  //функциональный компонент App
   useEffect(() => {
     api.getInitialCards()
       .then((data) => {
-        console.log(data)
-
-        // const results = data.map((item) => ({
-        //   owner: item.owner._id,
-        //   key: item._id,
-        //   nameCard: item.name,
-        //   likes: item.likes,
-        //   url: item.link,
-        // }));
         setCards(data);
       })
       .catch((err) => {
@@ -66,7 +56,6 @@ function App() {  //функциональный компонент App
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      console.log(newCard);
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     })
       .catch((err) => {
@@ -89,7 +78,6 @@ function App() {  //функциональный компонент App
   useEffect(() => {
     api.getUser()
       .then((data) => {
-        console.log(data);
         setCurrentUser(data);
       })
       .catch((err) => {

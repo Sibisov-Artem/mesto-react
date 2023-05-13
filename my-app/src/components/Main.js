@@ -6,31 +6,8 @@ import Card from './Card';
 
 function Main(props) {
 
-    // const [userName, setUserName] = useState('')
-    // const [userDescription, setUserDescription] = useState('')
-    // const [userAvatar, setUserAvatar] = useState('')
 
     const currentUser = useContext(CurrentUserContext);
-
-
-    // useEffect(() => {
-    //     api.getUser()
-    //         .then((data) => {
-    //             setUserName(data.name);
-    //             setUserDescription(data.about);
-    //             setUserAvatar(data.avatar);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err); // выведем ошибку в консоль
-    //         });
-    //     return () => {
-    //         console.log('Сброс')
-    //     }
-    // }, []) // массив зависимостей для ограничения количества срабатываний эффекта. Пустой массив означает, что нужно только один раз сработать при монтировании компонента.
-
-
-
-
 
     return (
 
