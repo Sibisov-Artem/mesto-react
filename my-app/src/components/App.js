@@ -89,24 +89,22 @@ function App() {  //функциональный компонент App
     api.editUser(inputData)
       .then((data) => {
         setCurrentUser(data);
-
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
       });
-    closeAllPopups();
   }
 
   function onUpdateAvatar(inputData) {
     api.changeAvatar(inputData)
       .then((data) => {
         setCurrentUser(data);
-
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
       });
-    closeAllPopups();
   }
 
   function handleAddPlaceSubmit(inputData) {
