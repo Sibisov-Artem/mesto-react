@@ -113,11 +113,13 @@ function App() {  //функциональный компонент App
     api.addNewCard(inputData)
       .then((newCard) => {
         setCards([newCard, ...cards]);
+        //закрытие попапа только в случае успеха
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
       });
-    closeAllPopups();
+
   }
 
   function closeAllPopups() {

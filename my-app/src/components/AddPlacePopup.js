@@ -1,5 +1,5 @@
 import PopupWithForm from "./PopupWithForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function AddPlacePopup(props) {
 
@@ -8,9 +8,9 @@ function AddPlacePopup(props) {
         setName(e.target.value);
     }
 
-    const [link, setlink] = useState('null');
+    const [link, setLink] = useState('');
     function handleChangeLink(e) {
-        setlink(e.target.value);
+        setLink(e.target.value);
     }
 
     function handleSubmit(e) {
@@ -22,7 +22,16 @@ function AddPlacePopup(props) {
             name,
             link,
         });
+        //как еще один вариант для очищения инпутов, но при сабмите, только инпуты очистятся даже при неуспешном сабмите через Api
+        // setName(""); 
+        // setLink("");
     }
+
+    //для очищения инпутов при открытии попапа
+    useEffect(() => {
+        setName('');
+        setLink('');
+    }, [props.isOpen]);
 
     return (
         <PopupWithForm
@@ -32,6 +41,7 @@ function AddPlacePopup(props) {
             isOpen={props.isOpen}
             onClose={props.onClose}
             onSubmit={handleSubmit}
+
 
             children={
                 <fieldset className="popup__input-container">
