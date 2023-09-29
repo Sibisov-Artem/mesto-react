@@ -66,7 +66,6 @@ git clone https://github.com/Sibisov-Artem/mesto-react.git
 
 **Запуск проекта:**
 
-Перейти в директорию my-app и оттуда ввести:
 
 `npm ci` — установка зависимостей
 
