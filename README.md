@@ -66,9 +66,8 @@ git clone https://github.com/Sibisov-Artem/mesto-react.git
 
 **Запуск проекта:**
 
-
 `npm ci` — установка зависимостей
 
-`npm run start` — запускает проект на локальном сервере
-
 `npm run build`  запуск сборки проекта
+
+`npm run start` — запускает проект на локальном сервере
