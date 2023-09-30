@@ -5,7 +5,7 @@
 ## ***Описание и функциональность***
 ![image](https://github.com/Sibisov-Artem/mesto/blob/main/screenshot/screenshot.png)
 
-За основу был взят проект ["Место" (ванильный JS)](https://github.com/Sibisov-Artem/mesto/tree/main) и портирован на React.
+За основу был взят проект ["Место" (ванильный JS)](https://github.com/Sibisov-Artem/mesto) и портирован на React.
 
 Данный проект представляет из себя интерактивную страницу, которая позволяет пользователям делиться своими фотографиями.
 
