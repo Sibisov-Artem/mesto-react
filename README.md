@@ -3,7 +3,7 @@
 
 ---
 ## ***Описание и функциональность***
-![image](https://github.com/Sibisov-Artem/mesto/blob/main/screenshot/screenshot.png)
+![image](https://github.com/Sibisov-Artem/mesto/blob/main/screenshot/screenshot.jpg)
 
 За основу был взят проект ["Место" (ванильный JS)](https://github.com/Sibisov-Artem/mesto) и портирован на React.
 
